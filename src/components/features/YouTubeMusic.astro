@@ -8,46 +8,130 @@ const embedUrl = new URL(`https://www.youtube-nocookie.com/embed/${videoId}`);
 embedUrl.searchParams.set("enablejsapi", "1");
 embedUrl.searchParams.set("loop", "1");
 embedUrl.searchParams.set("playlist", videoId);
+embedUrl.searchParams.set("playsinline", "1");
 const origin = import.meta.env.DEV ? Astro.url.origin : Astro.site?.origin;
 if (origin) embedUrl.searchParams.set("origin", origin);
 ---
 
-<section aria-label={title} class="youtube-music space-y-3 px-2 pb-2">
-	<p class="font-bold">{title}</p>
-	<iframe
-		src={embedUrl.href}
-		title={title}
-		width="100%"
-		height="200"
-		class="rounded-lg w-full min-h-[200px]"
-		allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-		referrerpolicy="strict-origin-when-cross-origin"
-		allowfullscreen
-	></iframe>
-	<a
-		href={`https://www.youtube.com/watch?v=${videoId}`}
-		target="_blank"
-		rel="noopener noreferrer"
-		class="link text-sm"
-	>在 YouTube 開啟</a>
-</section>
+<youtube-music class="music-summary" aria-label="背景音樂">
+	<div class="song-icon" aria-hidden="true">♫</div>
+	<div class="song-info">
+		<p class="song-title" data-song-title>{title}</p>
+		<p class="song-status" data-song-status role="status">按下播放開始聆聽</p>
+		<a href={`https://www.youtube.com/watch?v=${videoId}`} target="_blank" rel="noopener noreferrer">在 YouTube 開啟 ↗</a>
+	</div>
+	<button type="button" data-music-toggle aria-label="播放背景音樂" aria-pressed="false">播放</button>
+	<iframe src={embedUrl.href} title="背景音樂播放引擎" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1" aria-hidden="true" class="audio-engine"></iframe>
+</youtube-music>
 
 <script>
-	// Pause when the floating panel closes so playback always has visible controls.
-	function watchYouTubePanel() {
-		const panel = document.getElementById("music-nav-panel");
-		if (!panel || panel.dataset.youtubeObserved) return;
-		panel.dataset.youtubeObserved = "true";
-		const observer = new MutationObserver(() => {
-			if (panel.classList.contains("float-panel-closed")) {
-				panel.querySelector("iframe")?.contentWindow?.postMessage(
-					JSON.stringify({ event: "command", func: "pauseVideo", args: [] }),
-					"https://www.youtube-nocookie.com",
-				);
+	import { loadYouTubePlayer, type YouTubePlayer } from "@/utils/youtube-player";
+
+	class YouTubeMusic extends HTMLElement {
+		private player?: YouTubePlayer;
+		private wantsPlay = false;
+		private loading = false;
+		private initialized = false;
+		private pauseForVideo = () => {
+			this.wantsPlay = false;
+			this.player?.pauseVideo();
+		};
+
+		connectedCallback() {
+			document.addEventListener("jack:pause-music", this.pauseForVideo);
+			if (this.initialized) return;
+			this.initialized = true;
+			this.querySelector("button")?.addEventListener("click", () => this.toggle());
+		}
+
+		disconnectedCallback() {
+			document.removeEventListener("jack:pause-music", this.pauseForVideo);
+			this.player?.destroy();
+			this.player = undefined;
+		}
+
+		private status(text: string) {
+			const label = this.querySelector("[data-song-status]");
+			if (label) label.textContent = text;
+		}
+
+		private updateState(playing: boolean) {
+			const button = this.querySelector("button");
+			if (!button) return;
+			button.textContent = playing ? "暫停" : "播放";
+			button.setAttribute("aria-label", playing ? "暫停背景音樂" : "播放背景音樂");
+			button.setAttribute("aria-pressed", String(playing));
+			this.dataset.playing = String(playing);
+		}
+
+		private async toggle() {
+			if (this.loading) return;
+			this.wantsPlay = !this.wantsPlay;
+			if (this.player) {
+				if (this.wantsPlay) this.player.playVideo();
+				else this.player.pauseVideo();
+				return;
 			}
-		});
-		observer.observe(panel, { attributes: true, attributeFilter: ["class"] });
+			this.loading = true;
+			this.status("載入音樂中…");
+			try {
+				const Player = await loadYouTubePlayer();
+				if (!this.isConnected) return;
+				const iframe = this.querySelector("iframe");
+				if (!iframe) return;
+				this.player = new Player(iframe, {
+					events: {
+						onReady: () => {
+							this.loading = false;
+							this.player?.setVolume(60);
+							const title = this.player?.getVideoData().title;
+							const label = this.querySelector("[data-song-title]");
+							if (title && label) label.textContent = title;
+							if (this.wantsPlay) this.player?.playVideo();
+							else this.status("已暫停");
+						},
+						onStateChange: ({ data }) => {
+							this.updateState(data === 1);
+							if (data === 1) {
+								this.wantsPlay = true;
+								this.status("正在播放");
+							}
+							else if (data === 3) this.status("緩衝中…");
+							else if (data === 2 || data === 0) {
+								this.wantsPlay = false;
+								this.status("已暫停");
+							}
+						},
+						onError: () => this.failed(),
+					},
+				});
+			} catch {
+				this.failed();
+			} finally {
+				this.loading = false;
+			}
+		}
+
+		private failed() {
+			this.wantsPlay = false;
+			this.updateState(false);
+			this.status("暫時無法播放，請在 YouTube 開啟");
+			const engine = this.querySelector("iframe")?.cloneNode(true);
+			this.player?.destroy();
+			this.player = undefined;
+			if (engine && !this.querySelector("iframe")) this.append(engine);
+		}
 	}
-	watchYouTubePanel();
-	document.addEventListener("astro:page-load", watchYouTubePanel);
+	if (!customElements.get("youtube-music")) customElements.define("youtube-music", YouTubeMusic);
 </script>
+
+<style>
+	.music-summary { display: flex; align-items: center; gap: .75rem; padding: .5rem; }
+	.song-icon { display: grid; place-items: center; flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--btn-regular-bg); color: var(--primary); font-size: 1.5rem; }
+	.song-info { min-width: 0; flex: 1; }
+	.song-title { font-weight: 700; font-size: .85rem; overflow-wrap: anywhere; }
+	.song-status { font-size: .7rem; opacity: .6; margin: .2rem 0; }
+	a { font-size: .65rem; color: var(--primary); }
+	button { flex-shrink: 0; padding: .6rem .75rem; border-radius: 1rem; background: var(--btn-regular-bg); color: var(--primary); font-weight: 700; font-size: .75rem; cursor: pointer; }
+	.audio-engine { position: absolute; width: 0; height: 0; border: 0; visibility: hidden; pointer-events: none; }
+</style>

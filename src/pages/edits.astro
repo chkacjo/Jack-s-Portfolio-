@@ -1,0 +1,74 @@
+---
+import ShortsVideo from "@/components/features/ShortsVideo.astro";
+import Footer from "@/components/layout/Footer.astro";
+import HeaderTopRow from "@/components/layout/HeaderTopRow.astro";
+import NavMenuPanel from "@/components/layout/NavMenuPanel.astro";
+import { navbarMode, siteConfig } from "@/config";
+import { editingWorks } from "@/data/edits";
+import Layout from "@/layouts/Layout.astro";
+import { resolveNavMenuLinks } from "@/utils/nav-menu-utils";
+---
+
+<Layout title="剪輯作品" description="Jack 的短影音剪輯作品集，以適合手機觀看的直式畫面，呈現每一支 Shorts 的剪輯成果。">
+	<HeaderTopRow navbarMode={navbarMode} navbarWidthFull={siteConfig.navbar.widthFull ?? false} />
+	<main id="swup-container" class="edits-page" data-pagefind-body>
+		<header class="portfolio-intro">
+			<p class="eyebrow">JACK / VIDEO EDITOR</p>
+			<h1>剪輯作品<span>每一秒，都有重點。</span></h1>
+			<p class="intro-text">這裡收錄我的短影音剪輯成果。戴上耳機、點下播放，看看我如何用畫面說故事。</p>
+			<div class="intro-meta"><span>SHORTS / 直式短影音</span><span>{String(editingWorks.length).padStart(2, "0")} 件作品</span></div>
+		</header>
+		<section class="works" aria-label="剪輯成果">
+			{editingWorks.map((work, index) => (
+				<article class="work" id={work.id}>
+					<div class="video-stage"><ShortsVideo videoId={work.videoId} title={work.title} /></div>
+					<div class="work-copy">
+						<p class="eyebrow">作品 / {String(index + 1).padStart(2, "0")}</p>
+						<h2>{work.title}</h2>
+						<p>{work.description}</p>
+						<ul aria-label="作品類型">{work.tags.map((tag) => <li>{tag}</li>)}</ul>
+						<a class="work-link" href={`https://www.youtube.com/shorts/${work.videoId}`} target="_blank" rel="noopener noreferrer">在 YouTube 觀看 ↗</a>
+					</div>
+				</article>
+			))}
+		</section>
+		<section class="contact-block">
+			<h2>有想剪成影片的點子？</h2>
+			<p>歡迎到 Discord 找我聊聊。</p>
+			<a href="https://discord.gg/dtMBpKWwZ" target="_blank" rel="noopener noreferrer">前往 Discord ↗</a>
+		</section>
+	</main>
+	<Footer />
+	<NavMenuPanel links={resolveNavMenuLinks()} />
+</Layout>
+
+<style>
+	.edits-page { position: relative; z-index: 30; max-width: 1100px; margin: 0 auto; padding: 8rem 1.5rem 2rem; }
+	.portfolio-intro { max-width: 760px; margin-bottom: 3rem; }
+	.eyebrow { color: var(--primary); font-size: .78rem; font-weight: 700; letter-spacing: .16em; }
+	h1 { font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1.12; font-weight: 800; margin: 1rem 0 1.5rem; letter-spacing: -.04em; }
+	h1 span { display: block; font-size: .48em; margin-top: .7em; opacity: .6; letter-spacing: -.02em; }
+	.intro-text { max-width: 34rem; line-height: 1.9; opacity: .7; }
+	.intro-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; font-size: .75rem; font-weight: 600; opacity: .6; }
+	.works { display: grid; gap: 2rem; }
+	.work { border-radius: 1.75rem; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; background: var(--card-bg); border: 1px solid #8882; }
+	.video-stage { display: flex; justify-content: center; align-items: center; padding: 2rem; background: linear-gradient(135deg, #204845, #101e26); }
+	.work-copy { align-self: center; padding: 2.5rem; }
+	h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 750; line-height: 1.4; }
+	.work-copy h2 { margin: 1rem 0; }
+	.work-copy > p:not(.eyebrow) { line-height: 1.9; opacity: .7; }
+	ul { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 1.5rem 0 2rem; }
+	li { padding: .4rem .8rem; border: 1px solid #8883; border-radius: 2rem; font-size: .75rem; }
+	.work-link { display: inline-block; font-weight: 650; color: var(--primary); padding: .6rem 0; }
+	.contact-block { text-align: center; padding: 4rem 1rem 2rem; }
+	.contact-block p { margin: .8rem 0 1.5rem; opacity: .6; }
+	.contact-block a { display: inline-block; background: var(--primary); color: var(--page-bg); border-radius: 2rem; padding: .9rem 1.5rem; font-weight: 700; }
+	@media (max-width: 640px) {
+		.edits-page { padding: 6.5rem 1rem 1rem; }
+		.portfolio-intro { margin-bottom: 2rem; }
+		.work { grid-template-columns: minmax(0, 1fr); border-radius: 1.25rem; }
+		.video-stage { padding: 1.25rem; }
+		.work-copy { padding: 1.5rem; }
+		.contact-block { padding-top: 3rem; }
+	}
+</style>

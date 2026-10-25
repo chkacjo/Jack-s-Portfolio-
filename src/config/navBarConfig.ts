@@ -15,6 +15,11 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 	// 主页
 	links.push(LinkPresets.Home);
+	links.push({
+		name: "剪輯作品",
+		url: "/edits/",
+		icon: "material-symbols:movie-edit-outline",
+	});
 
 	// 文章及其子菜单
 	links.push({
@@ -70,6 +75,12 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				url: "https://github.com/chkacjo",
 				external: true,
 				icon: "fa7-brands:github",
+			},
+			{
+				name: "Discord",
+				icon: "fa7-brands:discord",
+				url: "https://discord.gg/dtMBpKWwZ",
+				external: true,
 			},
 		],
 	});

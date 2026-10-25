@@ -110,6 +110,12 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 					url: "https://github.com/chkacjo",
 					showName: true,
 				},
+				{
+					name: "Discord",
+					icon: "fa7-brands:discord",
+					url: "https://discord.gg/dtMBpKWwZ",
+					showName: false,
+				},
 			],
 		},
 		// 壁纸轮播配置，横幅壁纸和全屏壁纸共享，仅在配置多张图片时生效
