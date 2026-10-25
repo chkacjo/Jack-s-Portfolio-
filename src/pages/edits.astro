@@ -9,21 +9,26 @@ import MainGridLayout from "@/layouts/MainGridLayout.astro";
 	<div class="edits-page">
 		<Markdown class="edits-typography">
 			<header class="page-intro">
-				<h1>剪輯</h1>
-				<p>以下影片僅供版面與播放測試，並非我的剪輯成果。</p>
+				<div class="intro-heading"><h1>剪輯</h1><span class="collection-count">{String(editingWorks.length).padStart(2, "0")} 支影片</span></div>
+				<p class="test-notice">以下影片僅供版面與播放測試，並非我的剪輯成果。</p>
 			</header>
 			<section class="works" aria-label="剪輯測試影片">
-				{editingWorks.map((work) => (
+				{editingWorks.map((work, index) => (
 					<article class="work card-base" id={work.id}>
 						<header class="work-copy">
-							<h2>{work.title}</h2>
-							<p class="clip-caption">
+							<div class="work-heading">
+								<span class="work-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+								<h2>{work.title}</h2><span class="test-badge">測試</span>
+							</div>
+							<div class="work-meta">
 								<a href={`https://www.youtube.com/shorts/${work.videoId}`} target="_blank" rel="noopener noreferrer" aria-label={`${work.title}的原始頻道與觀看數`}>YTR：<span data-channel-for={work.videoId}>{work.channelName ?? "原頻道 ↗"}</span></a>
-								<span> · {work.viewCount === null ? "觀看數以 YouTube 為準" : `觀看數：${typeof work.viewCount === "number" ? work.viewCount.toLocaleString("zh-TW") : work.viewCount}`}</span>
-								<span> · {work.description}</span>
-							</p>
+								<span class="meta-divider" aria-hidden="true">/</span>
+								<span>{work.viewCount === null ? "觀看數以 YouTube 為準" : `觀看數：${typeof work.viewCount === "number" ? work.viewCount.toLocaleString("zh-TW") : work.viewCount}`}</span>
+							</div>
+							<p class="clip-caption">{work.description}</p>
 						</header>
 						<div class="video-stage not-prose"><ShortsVideo videoId={work.videoId} title={work.title} /></div>
+						<footer class="work-footer not-prose"><span>9:16 <span aria-hidden="true">·</span> YouTube Shorts</span><a href={`https://www.youtube.com/shorts/${work.videoId}`} target="_blank" rel="noopener noreferrer" aria-label={`在 YouTube 開啟${work.title}`}>開啟影片 <span aria-hidden="true">↗</span></a></footer>
 					</article>
 				))}
 			</section>
@@ -33,15 +38,29 @@ import MainGridLayout from "@/layouts/MainGridLayout.astro";
 
 <style>
 	.edits-page { position: relative; z-index: 30; --shorts-width: max(200px, min(380px, calc(76svh * 9 / 16))); max-width: calc(var(--shorts-width) + 7rem); margin: 0 auto; padding: 0 1.5rem 2rem; }
-	.page-intro { margin-bottom: 2rem; }
+	.page-intro { margin-bottom: 1.75rem; }
+	.intro-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+	.intro-heading h1 { margin: 0; }
+	.collection-count { color: var(--content-meta); font-size: .75rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+	.test-notice { margin: 0; padding-left: .875rem; border-left: 2px solid var(--primary); font-size: .8125rem; line-height: 1.8; }
 	.works { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-	.work { overflow: hidden; border-radius: var(--radius-large); }
-	.work-copy { padding: 1rem; }
-	.work-copy h2 { margin-top: 0; margin-bottom: .75rem; }
-	.clip-caption { margin: 0; font-size: .875rem; line-height: 1.8; }
-	.video-stage { display: flex; justify-content: center; padding: 0 2rem 1.25rem; }
+	.work { overflow: hidden; border-radius: var(--radius-large); border: 1px solid var(--line-divider); }
+	.work-copy { padding: 1.5rem 2rem 1.125rem; }
+	.work-heading { display: flex; align-items: center; gap: .625rem; }
+	.work-heading h2 { margin: 0; font-size: 1.125rem; line-height: 1.5; }
+	.work-index { font-size: .6875rem; color: var(--primary); font-weight: 700; font-variant-numeric: tabular-nums; }
+	.test-badge { margin-left: auto; padding: .15rem .5rem; border-radius: .5rem; background: var(--btn-regular-bg); color: var(--primary); font-size: .75rem; white-space: nowrap; }
+	.work-meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: .375rem; margin-top: .75rem; font-size: .8125rem; color: var(--content-meta); overflow-wrap: anywhere; }
+	.meta-divider { opacity: .4; }
+	.clip-caption { margin: .5rem 0 0; font-size: .875rem; line-height: 1.8; }
+	.video-stage { display: flex; justify-content: center; padding: 0 2rem; }
+	.work-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin: 1rem 2rem 0; padding: .875rem 0 1rem; border-top: 1px solid var(--line-divider); font-size: .75rem; color: var(--content-meta); }
+	.work-footer a { color: var(--primary); font-weight: 600; padding: .25rem 0; }
+	.work-footer a:hover { text-decoration: underline; }
 	@media (max-width: 640px) {
 		.edits-page { max-width: calc(var(--shorts-width) + 5rem); padding: 0 1rem 1rem; }
-		.video-stage { padding: 0 1.5rem 1rem; }
+		.work-copy { padding: 1.25rem 1.5rem 1rem; }
+		.video-stage { padding: 0 1.5rem; }
+		.work-footer { margin-inline: 1.5rem; }
 	}
 </style>

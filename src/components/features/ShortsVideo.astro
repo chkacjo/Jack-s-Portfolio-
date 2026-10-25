@@ -15,13 +15,19 @@ const { videoId, title } = Astro.props;
 			width="480"
 			height="360"
 		/>
-		<span class="play-label"><span aria-hidden="true">▶</span> 播放作品</span>
+		<span class="play-label"><span class="play-icon" aria-hidden="true">▶</span><span class="play-text">播放影片</span></span>
 	</button>
 </shorts-video>
 
 <script>
 	class ShortsVideo extends HTMLElement {
 		connectedCallback() {
+			const poster = this.querySelector("img");
+			if (poster) {
+				const hideFailedPoster = () => { poster.hidden = true; };
+				poster.addEventListener("error", hideFailedPoster, { once: true });
+				if (poster.complete && poster.naturalWidth === 0) hideFailedPoster();
+			}
 			this.querySelector("button")?.addEventListener("click", () => {
 				document.dispatchEvent(new Event("jack:pause-music"));
 				for (const other of document.querySelectorAll<HTMLIFrameElement>("shorts-video iframe")) {
@@ -68,15 +74,18 @@ const { videoId, title } = Astro.props;
 		background: linear-gradient(150deg, #244d4d, #10191d);
 	}
 	button:focus-visible { outline: 3px solid var(--primary); outline-offset: -5px; }
-	img { width: 100%; height: 100%; object-fit: cover; opacity: .75; }
+	img { width: 100%; height: 100%; object-fit: cover; opacity: .75; transition: transform .25s ease, opacity .25s ease; }
+	button:hover img { transform: scale(1.025); opacity: .9; }
 	.play-label {
-		position: absolute; inset: 0; display: flex; align-items: center;
+		position: absolute; inset: 0; display: flex; align-items: center; flex-direction: column;
 		justify-content: center; gap: .7rem; color: white; font-weight: 700;
 		background: linear-gradient(transparent, #0006);
 	}
-	.play-label > span {
-		display: grid; place-items: center; height: 3rem; width: 3rem;
+	.play-icon {
+		display: grid; place-items: center; height: 3.5rem; width: 3.5rem;
 		border-radius: 50%; background: #ffffff28; backdrop-filter: blur(10px);
 	}
+	.play-text { font-size: .8125rem; letter-spacing: .05em; }
+	@media (prefers-reduced-motion: reduce) { img { transition: none; } button:hover img { transform: none; } }
 	shorts-video :global(iframe) { width: 100%; height: 100%; border: 0; }
 </style>
