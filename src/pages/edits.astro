@@ -40,15 +40,16 @@ import { resolveNavMenuLinks } from "@/utils/nav-menu-utils";
 </Layout>
 
 <style>
-	.edits-page { position: relative; z-index: 30; --shorts-width: max(200px, min(380px, calc(76svh * 9 / 16))); max-width: calc(var(--shorts-width) + 4rem); margin: 0 auto; padding: 7rem 1.5rem 2rem; }
+	.edits-page { position: relative; z-index: 30; --shorts-width: max(200px, min(380px, calc(76svh * 9 / 16))); max-width: calc(var(--shorts-width) + 7rem); margin: 0 auto; padding: 7rem 1.5rem 2rem; }
 	.page-intro { margin-bottom: 2rem; }
 	.works { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 	.work { overflow: hidden; border-radius: var(--radius-large); }
 	.work-copy { padding: 1rem; }
 	.work-copy h2 { margin-top: 0; margin-bottom: .75rem; }
 	.clip-caption { margin: 0; font-size: .875rem; line-height: 1.8; }
-	.video-stage { display: flex; justify-content: center; padding: 0 .5rem .5rem; }
+	.video-stage { display: flex; justify-content: center; padding: 0 2rem 1.25rem; }
 	@media (max-width: 640px) {
-		.edits-page { max-width: calc(var(--shorts-width) + 3rem); padding: 6rem 1rem 1rem; }
+		.edits-page { max-width: calc(var(--shorts-width) + 5rem); padding: 6rem 1rem 1rem; }
+		.video-stage { padding: 0 1.5rem 1rem; }
 	}
 </style>
