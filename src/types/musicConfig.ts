@@ -1,7 +1,12 @@
 // 音乐播放器配置
 export type MusicPlayerConfig = {
-	// 使用方式：'meting' 或 'local'
-	mode?: "meting" | "local"; // "meting" 使用 Meting API，"local" 使用本地音乐列表
+	// 音源：Meting API、本地音訊檔或 YouTube 內嵌播放器
+	mode?: "meting" | "local" | "youtube";
+
+	youtube?: {
+		videoId: string;
+		title: string;
+	};
 
 	// 默认音量 (0-1)
 	volume?: number;

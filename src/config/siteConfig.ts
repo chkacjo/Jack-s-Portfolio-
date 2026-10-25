@@ -42,17 +42,16 @@ const pages = resolvePageToggles({
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "Firefly",
+	title: "Jack",
 
 	// 站点副标题
-	subtitle: "Demo site",
+	subtitle: "",
 
 	// 站点 URL
 	site_url: "https://chkacjo.github.io/Jack-s-Portfolio-/",
 
 	// 站点描述
-	description:
-		"Firefly 是一款基於 Astro 框架和 Fuwari 模板開發的清新美觀且現代化個人博客主題模板，專為技術愛好者和內容創作者設計。該主題融合了現代 Web 技術棧，提供了豐富的功能模塊和高度可定製的界面，讓您能夠輕鬆打造出專業且美觀的個人博客網站。",
+	description: "Jack 的個人網站，分享學習筆記、生活紀錄與項目成果。",
 
 	// 站点关键词
 	keywords: [
@@ -117,7 +116,7 @@ export const siteConfig: SiteConfig = {
 			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "Firefly Blog",
+		title: "Jack",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中

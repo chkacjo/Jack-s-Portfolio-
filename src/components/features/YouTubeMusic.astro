@@ -1,0 +1,53 @@
+---
+interface Props {
+	videoId: string;
+	title: string;
+}
+const { videoId, title } = Astro.props;
+const embedUrl = new URL(`https://www.youtube-nocookie.com/embed/${videoId}`);
+embedUrl.searchParams.set("enablejsapi", "1");
+embedUrl.searchParams.set("loop", "1");
+embedUrl.searchParams.set("playlist", videoId);
+const origin = import.meta.env.DEV ? Astro.url.origin : Astro.site?.origin;
+if (origin) embedUrl.searchParams.set("origin", origin);
+---
+
+<section aria-label={title} class="youtube-music space-y-3 px-2 pb-2">
+	<p class="font-bold">{title}</p>
+	<iframe
+		src={embedUrl.href}
+		title={title}
+		width="100%"
+		height="200"
+		class="rounded-lg w-full min-h-[200px]"
+		allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+		referrerpolicy="strict-origin-when-cross-origin"
+		allowfullscreen
+	></iframe>
+	<a
+		href={`https://www.youtube.com/watch?v=${videoId}`}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="link text-sm"
+	>在 YouTube 開啟</a>
+</section>
+
+<script>
+	// Pause when the floating panel closes so playback always has visible controls.
+	function watchYouTubePanel() {
+		const panel = document.getElementById("music-nav-panel");
+		if (!panel || panel.dataset.youtubeObserved) return;
+		panel.dataset.youtubeObserved = "true";
+		const observer = new MutationObserver(() => {
+			if (panel.classList.contains("float-panel-closed")) {
+				panel.querySelector("iframe")?.contentWindow?.postMessage(
+					JSON.stringify({ event: "command", func: "pauseVideo", args: [] }),
+					"https://www.youtube-nocookie.com",
+				);
+			}
+		});
+		observer.observe(panel, { attributes: true, attributeFilter: ["class"] });
+	}
+	watchYouTubePanel();
+	document.addEventListener("astro:page-load", watchYouTubePanel);
+</script>
