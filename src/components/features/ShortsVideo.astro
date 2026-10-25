@@ -24,11 +24,19 @@ const { videoId, title } = Astro.props;
 		connectedCallback() {
 			this.querySelector("button")?.addEventListener("click", () => {
 				document.dispatchEvent(new Event("jack:pause-music"));
+				for (const other of document.querySelectorAll<HTMLIFrameElement>("shorts-video iframe")) {
+					other.contentWindow?.postMessage(
+						JSON.stringify({ event: "command", func: "pauseVideo", args: [] }),
+						"https://www.youtube-nocookie.com",
+					);
+				}
 				const iframe = document.createElement("iframe");
 				const videoId = this.dataset.videoId;
 				const src = new URL(`https://www.youtube-nocookie.com/embed/${videoId}`);
 				src.searchParams.set("autoplay", "1");
 				src.searchParams.set("playsinline", "1");
+				src.searchParams.set("enablejsapi", "1");
+				src.searchParams.set("origin", window.location.origin);
 				iframe.src = src.href;
 				iframe.title = this.dataset.title || "剪輯作品";
 				iframe.allow = "autoplay; encrypted-media; fullscreen; picture-in-picture";

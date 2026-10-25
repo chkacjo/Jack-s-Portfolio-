@@ -16,7 +16,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	// 主页
 	links.push(LinkPresets.Home);
 	links.push({
-		name: "剪輯作品",
+		name: "剪輯",
 		url: "/edits/",
 		icon: "material-symbols:movie-edit-outline",
 	});
