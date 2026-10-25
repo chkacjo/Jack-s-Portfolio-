@@ -1,7 +1,7 @@
 ---
-title: KaTeX 数学公式示例
+title: KaTeX 數學公式示例
 published: 1970-01-02
-description: 展示 Firefly 主题对 KaTeX 数学公式的支持，包括行内公式、块级公式和复杂数学符号。
+description: 展示 Firefly 主題對 KaTeX 數學公式的支持，包括行內公式、塊級公式和複雜數學符號。
 tags: [KaTeX, Math, 示例]
 category: 文章示例
 image: api
@@ -10,19 +10,19 @@ series: "Firefly 功能示例2"
 seriesOrder: 6
 ---
 
-本文展示了 [Firefly](https://github.com/CuteLeaf/Firefly) 主题对 KaTeX 数学公式的渲染支持。
+本文展示了 [Firefly](https://github.com/CuteLeaf/Firefly) 主題對 KaTeX 數學公式的渲染支持。
 
-## 行内公式 (Inline)
+## 行內公式 (Inline)
 
-行内公式使用单个 `$` 符号包裹。
+行內公式使用單個 `$` 符號包裹。
 
-例如：欧拉公式 $e^{i\pi} + 1 = 0$ 是数学中最优美的公式之一。
+例如：歐拉公式 $e^{i\pi} + 1 = 0$ 是數學中最優美的公式之一。
 
-质能方程 $E = mc^2$ 也是家喻户晓。
+質能方程 $E = mc^2$ 也是家喻戶曉。
 
-## 块级公式 (Block)
+## 塊級公式 (Block)
 
-块级公式使用两个 `$$` 符号包裹，会居中显示。
+塊級公式使用兩個 `$$` 符號包裹，會居中顯示。
 
 $$
 \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
@@ -32,9 +32,9 @@ $$
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
 
-## 复杂示例
+## 複雜示例
 
-### 矩阵 (Matrices)
+### 矩陣 (Matrices)
 
 $$
 \begin{pmatrix}
@@ -51,7 +51,7 @@ c\alpha + d\gamma & c\beta + d\delta
 \end{pmatrix}
 $$
 
-### 极限与求和 (Limits and Sums)
+### 極限與求和 (Limits and Sums)
 
 $$
 \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
@@ -61,7 +61,7 @@ $$
 \lim_{x \to 0} \frac{\sin x}{x} = 1
 $$
 
-### 麦克斯韦方程组 (Maxwell's Equations)
+### 麥克斯韋方程組 (Maxwell's Equations)
 
 $$
 \begin{aligned}
@@ -72,15 +72,15 @@ $$
 \end{aligned}
 $$
 
-### 化学方程式 (Chemical Equations)
+### 化學方程式 (Chemical Equations)
 
 $$
 \ce{CH4 + 2O2 -> CO2 + 2H2O}
 $$
 
-## 更多符号
+## 更多符號
 
-| 符号 | 代码 | 渲染结果 |
+| 符號 | 代碼 | 渲染結果 |
 | :--- | :--- | :--- |
 | Alpha | `\alpha` | $\alpha$ |
 | Beta | `\beta` | $\beta$ |
@@ -90,4 +90,4 @@ $$
 | Right Arrow | `\rightarrow` | $\rightarrow$ |
 | Partial | `\partial` | $\partial$ |
 
-更多 KaTeX 语法请参考 [KaTeX Supported Functions](https://katex.org/docs/supported.html)。
+更多 KaTeX 語法請參考 [KaTeX Supported Functions](https://katex.org/docs/supported.html)。

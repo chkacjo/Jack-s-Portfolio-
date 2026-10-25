@@ -1,23 +1,23 @@
 ---
-title: Markdown Mermaid 图表
+title: Markdown Mermaid 圖表
 published: 1970-01-01
 pinned: false
-description: 一个包含 Mermaid 的 Markdown 博客文章简单示例。
+description: 一個包含 Mermaid 的 Markdown 博客文章簡單示例。
 tags: [Markdown, 博客, Mermaid, Firefly]
 category: 文章示例
 slug: markdown-mermaid
 series: "Firefly 功能示例2"
 seriesOrder: 3
 ---
-## Markdown 中 Mermaid 图表完整指南
+## Markdown 中 Mermaid 圖表完整指南
 
-本文演示如何在 Markdown 文档中使用 Mermaid 创建各种复杂图表，包括流程图、时序图、ER 图、类图、状态图、XY 图、甘特图、思维导图等。
+本文演示如何在 Markdown 文檔中使用 Mermaid 創建各種複雜圖表，包括流程圖、時序圖、ER 圖、類圖、狀態圖、XY 圖、甘特圖、思維導圖等。
 
-> Mermaid 图表由 [Merman](https://github.com/Latias94/merman) 实现。Firefly 在 Astro 构建阶段生成亮色和深色两套静态 SVG，无需在浏览器中加载 Mermaid 渲染运行时。可以前往 [Merman Playground](http://frankorz.com/merman/) 实时编辑语法并预览渲染结果。
+> Mermaid 圖表由 [Merman](https://github.com/Latias94/merman) 實現。Firefly 在 Astro 構建階段生成亮色和深色兩套靜態 SVG，無需在瀏覽器中加載 Mermaid 渲染運行時。可以前往 [Merman Playground](http://frankorz.com/merman/) 實時編輯語法並預覽渲染結果。
 
-## 流程图示例
+## 流程圖示例
 
-流程图非常适合表示流程或算法步骤。
+流程圖非常適合表示流程或算法步驟。
 
 
 
@@ -42,9 +42,9 @@ graph TD
     I --> J
 ```
 
-## 时序图示例
+## 時序圖示例
 
-时序图显示对象之间随时间的交互。
+時序圖顯示對象之間隨時間的交互。
 
 ```mermaid
 sequenceDiagram
@@ -72,9 +72,9 @@ sequenceDiagram
     end
 ```
 
-## ER 图示例
+## ER 圖示例
 
-ER 图（实体关系图）非常适合表示数据库结构。
+ER 圖（實體關係圖）非常適合表示數據庫結構。
 
 ```mermaid
 erDiagram
@@ -109,9 +109,9 @@ erDiagram
     ARTICLE }o--o{ CATEGORY : "belongs to"
 ```
 
-## 类图示例
+## 類圖示例
 
-类图显示系统的静态结构，包括类、属性、方法及其关系。
+類圖顯示系統的靜態結構，包括類、屬性、方法及其關係。
 
 ```mermaid
 classDiagram
@@ -155,9 +155,9 @@ classDiagram
     Article "1" -- "*" Category : 属于
 ```
 
-## 状态图示例
+## 狀態圖示例
 
-状态图显示对象在其生命周期中经历的状态序列。
+狀態圖顯示對象在其生命週期中經歷的狀態序列。
 
 ```mermaid
 stateDiagram-v2
@@ -181,9 +181,9 @@ stateDiagram-v2
     已归档 --> [*]
 ```
 
-## XY 图示例
+## XY 圖示例
 
-XY 图表非常适合展示趋势和对比数据。
+XY 圖表非常適合展示趨勢和對比數據。
 
 ```mermaid
 xychart-beta
@@ -194,9 +194,9 @@ xychart-beta
     line [2500, 3200, 4100, 3800, 4500, 4800]
 ```
 
-## 饼图示例
+## 餅圖示例
 
-饼图适合直观展示各部分在整体中的占比。
+餅圖適合直觀展示各部分在整體中的佔比。
 
 ```mermaid
 pie showData
@@ -207,9 +207,9 @@ pie showData
     "其他" : 10
 ```
 
-## 甘特图示例
+## 甘特圖示例
 
-甘特图可以按时间轴展示项目阶段、任务依赖和当前进度。
+甘特圖可以按時間軸展示項目階段、任務依賴和當前進度。
 
 ```mermaid
 gantt
@@ -227,9 +227,9 @@ gantt
     正式上线 :milestone, release, after test, 0d
 ```
 
-## 思维导图示例
+## 思維導圖示例
 
-思维导图适合梳理主题层级和知识结构。
+思維導圖適合梳理主題層級和知識結構。
 
 ```mermaid
 mindmap
@@ -247,9 +247,9 @@ mindmap
       Merman
 ```
 
-## 时间线示例
+## 時間線示例
 
-时间线用于按年份或阶段呈现项目的重要事件。
+時間線用於按年份或階段呈現項目的重要事件。
 
 ```mermaid
 timeline
@@ -262,9 +262,9 @@ timeline
          : 使用 Merman 渲染图表
 ```
 
-## 用户旅程图示例
+## 用戶旅程圖示例
 
-用户旅程图能够描述用户在不同阶段的行为和体验评分。
+用戶旅程圖能夠描述用戶在不同階段的行為和體驗評分。
 
 ```mermaid
 journey
@@ -280,9 +280,9 @@ journey
       分享文章: 3: 读者
 ```
 
-## Git 图示例
+## Git 圖示例
 
-Git 图可以清晰展示分支、提交和合并历史。
+Git 圖可以清晰展示分支、提交和合並歷史。
 
 ```mermaid
 gitGraph
@@ -298,7 +298,7 @@ gitGraph
 
 ## 看板示例
 
-看板适合展示任务在不同工作阶段之间的分布。
+看板適合展示任務在不同工作階段之間的分佈。
 
 ```mermaid
 kanban
@@ -312,9 +312,9 @@ kanban
     task5[亮暗主题]
 ```
 
-## Sankey 图示例
+## Sankey 圖示例
 
-Sankey 图通过连线宽度展示流量在不同节点之间的流向。
+Sankey 圖通過連線寬度展示流量在不同節點之間的流向。
 
 ```mermaid
 sankey-beta
@@ -326,10 +326,10 @@ Post detail,Related posts,260
 Post detail,External shares,180
 ```
 
-## 总结
+## 總結
 
-Mermaid 是在 Markdown 文档中创建各种类型图表的强大工具。本文演示了流程图、时序图、ER 图、类图、状态图、XY 图、饼图、甘特图、思维导图、时间线、用户旅程图、Git 图、看板和 Sankey 图。这些图表可以帮助您更清晰地表达复杂的概念、流程和数据结构。
+Mermaid 是在 Markdown 文檔中創建各種類型圖表的強大工具。本文演示了流程圖、時序圖、ER 圖、類圖、狀態圖、XY 圖、餅圖、甘特圖、思維導圖、時間線、用戶旅程圖、Git 圖、看板和 Sankey 圖。這些圖表可以幫助您更清晰地表達複雜的概念、流程和數據結構。
 
-要使用 Mermaid，只需在代码块中指定 mermaid 语言，并使用简洁的文本语法描述图表。图表会在构建时自动渲染为 SVG，无需客户端 JavaScript 加载。
+要使用 Mermaid，只需在代碼塊中指定 mermaid 語言，並使用簡潔的文本語法描述圖表。圖表會在構建時自動渲染為 SVG，無需客戶端 JavaScript 加載。
 
-可以前往 [Merman Playground](http://frankorz.com/merman/) 尝试更多语法，再将图表代码粘贴到文章中。
+可以前往 [Merman Playground](http://frankorz.com/merman/) 嘗試更多語法，再將圖表代碼粘貼到文章中。

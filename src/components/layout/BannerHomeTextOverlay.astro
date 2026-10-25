@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import TypewriterText from "@/components/features/TypewriterText.astro";
 import { backgroundWallpaper } from "@/config";
+import { url } from "@/utils/url-utils";
 import { encodeMailto, MAILTO_ONCLICK_SCRIPT } from "@/utils/email-utils";
 
 interface Props {
@@ -49,7 +50,7 @@ const homeTextLinksEnable = homeText?.linksEnable !== false;
                             const isExternal = link.url.startsWith("http");
                             return (
                                 <a
-                                    href={isMailto ? "#" : link.url}
+                                    href={isMailto ? "#" : link.url.startsWith("/") && !link.url.startsWith("//") ? url(link.url) : link.url}
                                     aria-label={link.name}
                                     title={link.name}
                                     data-encoded-email={encodedEmail}

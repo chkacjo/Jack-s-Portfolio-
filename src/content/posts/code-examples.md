@@ -1,8 +1,8 @@
 ---
-title: Firefly 代码块示例
+title: Firefly 代碼塊示例
 published: 1970-01-03
 pinned: false
-description: 在Firefly中使用表达性代码的代码块在 Markdown 中的外观。
+description: 在Firefly中使用表達性代碼的代碼塊在 Markdown 中的外觀。
 tags: [Markdown, Firefly]
 category: 文章示例
 image: ./images/firefly3.avif
@@ -11,21 +11,21 @@ series: "Firefly 功能示例2"
 seriesOrder: 5
 ---
 
-在这里，我们将探索如何使用 [Expressive Code](https://expressive-code.com/) 展示代码块。提供的示例基于官方文档，您可以参考以获取更多详细信息。
+在這裡，我們將探索如何使用 [Expressive Code](https://expressive-code.com/) 展示代碼塊。提供的示例基於官方文檔，您可以參考以獲取更多詳細信息。
 
-## 表达性代码
+## 表達性代碼
 
-### 语法高亮
+### 語法高亮
 
-[语法高亮](https://expressive-code.com/key-features/syntax-highlighting/)
+[語法高亮](https://expressive-code.com/key-features/syntax-highlighting/)
 
-#### 常规语法高亮
+#### 常規語法高亮
 
 ```js
 console.log('此代码有语法高亮!')
 ```
 
-#### 渲染 ANSI 转义序列
+#### 渲染 ANSI 轉義序列
 
 ```ansi
 [1;4mStandard ANSI colors:[0m
@@ -56,11 +56,11 @@ console.log('此代码有语法高亮!')
 - [9mStrikethrough[0m
 ```
 
-### 编辑器和终端框架
+### 編輯器和終端框架
 
-[编辑器和终端框架](https://expressive-code.com/key-features/frames/)
+[編輯器和終端框架](https://expressive-code.com/key-features/frames/)
 
-#### 代码编辑器框架
+#### 代碼編輯器框架
 
 ```js title="my-test-file.js"
 console.log('标题属性示例')
@@ -73,7 +73,7 @@ console.log('标题属性示例')
 <div>文件名注释示例</div>
 ```
 
-#### 终端框架
+#### 終端框架
 
 ```bash
 echo "此终端框架没有标题"
@@ -85,7 +85,7 @@ echo "此终端框架没有标题"
 Write-Output "这个有标题!"
 ```
 
-#### 覆盖框架类型
+#### 覆蓋框架類型
 
 ```sh frame="none"
 echo "看，没有框架!"
@@ -99,11 +99,11 @@ function Watch-Tail { Get-Content -Tail 20 -Wait $args }
 New-Alias tail Watch-Tail
 ```
 
-### 文本和行标记
+### 文本和行標記
 
-[文本和行标记](https://expressive-code.com/key-features/text-markers/)
+[文本和行標記](https://expressive-code.com/key-features/text-markers/)
 
-#### 标记整行和行范围
+#### 標記整行和行範圍
 
 ```js {1, 4, 7-8}
 // 第1行 - 通过行号定位
@@ -116,7 +116,7 @@ New-Alias tail Watch-Tail
 // 第8行 - 通过范围 "7-8" 定位
 ```
 
-#### 选择行标记类型 (mark, ins, del)
+#### 選擇行標記類型 (mark, ins, del)
 
 ```js title="line-markers.js" del={2} ins={3-4} {6}
 function demo() {
@@ -128,7 +128,7 @@ function demo() {
 }
 ```
 
-#### 为行标记添加标签
+#### 為行標記添加標籤
 
 ```jsx {"1":5} del={"2":7-8} ins={"3":10-12}
 // labeled-line-markers.jsx
@@ -146,7 +146,7 @@ function demo() {
 </button>
 ```
 
-#### 在单独行上添加长标签
+#### 在單獨行上添加長標籤
 
 ```jsx {"1. Provide the value prop here:":5-6} del={"2. Remove the disabled and active states:":8-10} ins={"3. Add this to render the children inside the button:":12-15}
 // labeled-line-markers.jsx
@@ -167,7 +167,7 @@ function demo() {
 </button>
 ```
 
-#### 使用类似 diff 的语法
+#### 使用類似 diff 的語法
 
 ```diff
 +此行将标记为已插入
@@ -186,7 +186,7 @@ function demo() {
  no whitespace will be removed either
 ```
 
-#### 结合语法高亮和类似 diff 的语法
+#### 結合語法高亮和類似 diff 的語法
 
 ```diff lang="js"
   function thisIsJavaScript() {
@@ -197,7 +197,7 @@ function demo() {
   }
 ```
 
-#### 标记行内的单独文本
+#### 標記行內的單獨文本
 
 ```js "given text"
 function demo() {
@@ -206,19 +206,19 @@ function demo() {
 }
 ```
 
-#### 正则表达式
+#### 正則表達式
 
 ```ts /ye[sp]/
 console.log('单词 yes 和 yep 将被标记。')
 ```
 
-#### 转义正斜杠
+#### 轉義正斜槓
 
 ```sh /\/ho.*\//
 echo "Test" > /home/test.txt
 ```
 
-#### 选择内联标记类型 (mark, ins, del)
+#### 選擇內聯標記類型 (mark, ins, del)
 
 ```js "return true;" ins="inserted" del="deleted"
 function demo() {
@@ -228,11 +228,11 @@ function demo() {
 }
 ```
 
-### 自动换行
+### 自動換行
 
-[自动换行](https://expressive-code.com/key-features/word-wrap/)
+[自動換行](https://expressive-code.com/key-features/word-wrap/)
 
-#### 为每个块配置自动换行
+#### 為每個塊配置自動換行
 
 ```js wrap
 // 启用换行的示例
@@ -250,7 +250,7 @@ function getLongString() {
 }
 ```
 
-#### 配置换行的缩进
+#### 配置換行的縮進
 
 ```js wrap preserveIndent
 // preserveIndent 示例（默认启用）
@@ -268,9 +268,9 @@ function getLongString() {
 }
 ```
 
-## 可折叠部分
+## 可摺疊部分
 
-[可折叠部分](https://expressive-code.com/plugins/collapsible-sections/)
+[可摺疊部分](https://expressive-code.com/plugins/collapsible-sections/)
 
 ```js collapse={1-5, 12-14, 21-24}
 // 所有这些样板设置代码将被折叠
@@ -299,11 +299,11 @@ engine.freeMemory()
 engine.shutdown({ reason: '示例样板代码结束' })
 ```
 
-## 行号
+## 行號
 
-[行号](https://expressive-code.com/plugins/line-numbers/)
+[行號](https://expressive-code.com/plugins/line-numbers/)
 
-### 为每个块显示行号
+### 為每個塊顯示行號
 
 ```js showLineNumbers
 // 此代码块将显示行号
@@ -319,19 +319,19 @@ console.log('你好?')
 console.log('抱歉，你知道我在第几行吗?')
 ```
 
-### 更改起始行号
+### 更改起始行號
 
 ```js showLineNumbers startLineNumber=5
 console.log('来自第5行的问候!')
 console.log('我在第6行')
 ```
 
-## Tab 代码块
+## Tab 代碼塊
 
-由 [rehype-code-group](https://github.com/ITZSHOAIB/rehype-code-group) 提供，语法与 [VitePress 代码组](https://vitepress.dev/guide/markdown#code-groups) 一致：用 `::: code-group labels=[...]` 包裹多个代码块，即可合并成一组标签页。
+由 [rehype-code-group](https://github.com/ITZSHOAIB/rehype-code-group) 提供，語法與 [VitePress 代碼組](https://vitepress.dev/guide/markdown#code-groups) 一致：用 `::: code-group labels=[...]` 包裹多個代碼塊，即可合併成一組標籤頁。
 
 > [!NOTE]
-> `labels=[...]` 中的标签按顺序对应组内的代码块，用英文逗号分隔；`:::` 与 `code-group` 之间的空格不能省略。
+> `labels=[...]` 中的標籤按順序對應組內的代碼塊，用英文逗號分隔；`:::` 與 `code-group` 之間的空格不能省略。
 
 ### 基本用法
 
@@ -377,9 +377,9 @@ def greet(name):
 
 :::
 
-### 标签中使用 Emoji
+### 標籤中使用 Emoji
 
-标签支持 [emoji 短代码](https://github.com/omnidan/node-emoji#readme)，构建时会自动转换成 emoji：
+標籤支持 [emoji 短代碼](https://github.com/omnidan/node-emoji#readme)，構建時會自動轉換成 emoji：
 
 ````markdown
 ::: code-group labels=[:package: npm, :package: pnpm, :yarn: yarn]
@@ -401,11 +401,11 @@ yarn create astro
 
 :::
 
-### 与其他代码块特性组合
+### 與其他代碼塊特性組合
 
-组内仍是普通的 Expressive Code 代码块，标题、行号、行标记、折叠、终端框架等特性都可以照常使用。
+組內仍是普通的 Expressive Code 代碼塊，標題、行號、行標記、摺疊、終端框架等特性都可以照常使用。
 
-::: code-group labels=[配置文件, 终端, 折叠]
+::: code-group labels=[配置文件, 終端, 摺疊]
 
 ```js title="astro.config.mjs" showLineNumbers {2} ins={3}
 export default {
@@ -428,27 +428,27 @@ console.log(a, b);
 
 :::
 
-### 不止是代码块
+### 不止是代碼塊
 
-标签页内可以放任意内容，例如文字、列表或图片：
+標籤頁內可以放任意內容，例如文字、列表或圖片：
 
-::: code-group labels=[说明, 列表]
+::: code-group labels=[說明, 列表]
 
-这是一段普通的段落内容。
+這是一段普通的段落內容。
 
-- 列表项一
-- 列表项二
+- 列表項一
+- 列表項二
 
 :::
 
 > [!TIP]
-> 标签栏在构建期生成，默认展开第一项；支持鼠标点击与键盘 <kbd>←</kbd> / <kbd>→</kbd> / <kbd>Home</kbd> / <kbd>End</kbd> 切换。
+> 標籤欄在構建期生成，默認展開第一項；支持鼠標點擊與鍵盤 <kbd>←</kbd> / <kbd>→</kbd> / <kbd>Home</kbd> / <kbd>End</kbd> 切換。
 
-### 在提醒框内使用（MDX 组件）
+### 在提醒框內使用（MDX 組件）
 
-`::: code-group` 和 `::: tip` 等 Docusaurus 风格提醒框都使用 `:::` 容器语法，而 micromark-directive 规定父子容器的冒号数必须不同，因此 `::: code-group` **无法嵌套在 `::: tip` 等提醒框内**（整块会失效）。
+`::: code-group` 和 `::: tip` 等 Docusaurus 風格提醒框都使用 `:::` 容器語法，而 micromark-directive 規定父子容器的冒號數必須不同，因此 `::: code-group` **無法嵌套在 `::: tip` 等提醒框內**（整塊會失效）。
 
-这种情况改用 MDX 组件 [`TabGroup`](@/components/common/TabGroup.svelte)：MDX 组件不经过 `:::` 指令解析，在提醒框内外都能正常使用，也方便日后扩展更多 UI 组件。把文章后缀改为 `.mdx`，从统一入口 [`@/components/firefly-mdx`](@/components/firefly-mdx.ts) 引入（可一次引入多个组件）：
+這種情況改用 MDX 組件 [`TabGroup`](@/components/common/TabGroup.svelte)：MDX 組件不經過 `:::` 指令解析，在提醒框內外都能正常使用，也方便日後擴展更多 UI 組件。把文章後綴改為 `.mdx`，從統一入口 [`@/components/firefly-mdx`](@/components/firefly-mdx.ts) 引入（可一次引入多個組件）：
 
 ````mdx
 import { TabGroup } from "@/components/firefly-mdx";
@@ -469,6 +469,6 @@ import { TabGroup } from "@/components/firefly-mdx";
 ````
 
 :::tip
-- `labels` 数组给每个代码块声明标签，顺序一一对应
-- 组件用 `client:load` 激活标签切换
+- `labels` 數組給每個代碼塊聲明標籤，順序一一對應
+- 組件用 `client:load` 激活標籤切換
 :::

@@ -1,7 +1,7 @@
 ---
-title: Markdown PlantUML 图表
+title: Markdown PlantUML 圖表
 published: 1970-01-01
-description: 用于验证 Firefly 中 PlantUML 插件渲染、主题切换与交互能力的示例文章。
+description: 用於驗證 Firefly 中 PlantUML 插件渲染、主題切換與交互能力的示例文章。
 tags: [PlantUML, Firefly, Markdown]
 category: 文章示例
 slug: markdown-plantuml
@@ -9,19 +9,19 @@ series: "Firefly 功能示例2"
 seriesOrder: 4
 ---
 
-## Markdown 中 PlantUML 图表指南
+## Markdown 中 PlantUML 圖表指南
 
-PlantUML 是一种使用纯文本描述图表的工具。你只需要写一段结构化语法，就可以生成时序图、类图、用例图、活动图等常见工程图。
+PlantUML 是一種使用純文本描述圖表的工具。你只需要寫一段結構化語法，就可以生成時序圖、類圖、用例圖、活動圖等常見工程圖。
 
-它特别适合写在技术博客和项目文档里：
+它特別適合寫在技術博客和項目文檔裡：
 
-- 图表和正文一起版本管理，便于协作与审阅
-- 修改图只需要改文本，适合频繁迭代
-- 能和 Markdown 无缝结合，保持文档统一
+- 圖表和正文一起版本管理，便於協作與審閱
+- 修改圖只需要改文本，適合頻繁迭代
+- 能和 Markdown 無縫結合，保持文檔統一
 
-在 Firefly 中，`plantuml` 代码块会在构建阶段编码并生成服务器 SVG 地址，页面端再根据亮暗主题自动切换图源，并支持缩放、拖拽和全屏交互。
+在 Firefly 中，`plantuml` 代碼塊會在構建階段編碼並生成服務器 SVG 地址，頁面端再根據亮暗主題自動切換圖源，並支持縮放、拖拽和全屏交互。
 
-如果你想快速上手，可以记住这个最小模板：
+如果你想快速上手，可以記住這個最小模板：
 
 ```plantuml
 @startuml
@@ -30,7 +30,7 @@ Bob --> Alice: Hi
 @enduml
 ```
 
-## 活动图示例
+## 活動圖示例
 
 ```plantuml
 @startuml
@@ -53,7 +53,7 @@ stop
 @enduml
 ```
 
-## 状态图示例
+## 狀態圖示例
 
 ```plantuml
 @startuml
@@ -75,7 +75,7 @@ state 已发布 {
 @enduml
 ```
 
-## 用例图示例
+## 用例圖示例
 
 ```plantuml
 @startuml
@@ -104,7 +104,7 @@ rectangle 博客系统 {
 @enduml
 ```
 
-## 组件图示例
+## 組件圖示例
 
 ```plantuml
 @startuml
@@ -128,7 +128,7 @@ Parser --> Content : read posts
 @enduml
 ```
 
-## 部署图示例
+## 部署圖示例
 
 ```plantuml
 @startuml
@@ -159,7 +159,7 @@ database "Object Storage" {
 @enduml
 ```
 
-## ER 图示例
+## ER 圖示例
 
 ```plantuml
 @startuml
@@ -195,7 +195,7 @@ Post ||--o{ Comment : has
 @enduml
 ```
 
-## 时序图示例（登录与刷新令牌）
+## 時序圖示例（登錄與刷新令牌）
 
 ```plantuml
 @startuml
@@ -223,7 +223,7 @@ database Redis as 会话缓存
 @enduml
 ```
 
-## C4 风格容器图示例
+## C4 風格容器圖示例
 
 ```plantuml
 @startuml

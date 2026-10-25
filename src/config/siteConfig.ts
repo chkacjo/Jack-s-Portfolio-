@@ -4,27 +4,27 @@ import { resolveSiteLang } from "../utils/site-config-utils";
 
 // 定义站点语言
 // 语言代码，例如：'zh_CN', 'zh_TW', 'en', 'ja', 'ru', 'ko'。
-const SITE_LANG = resolveSiteLang("zh_CN");
+const SITE_LANG = resolveSiteLang("zh_TW");
 
 // 页面开关配置 - 控制特定页面的访问权限，设为false会返回404并自动隐藏对应的导航栏菜单项
 const pages = resolvePageToggles({
 	// ── 社交 (Social) ──────────────────────────────────
 
 	// 友链页面开关
-	friends: true,
+	friends: false,
 	// 留言板页面开关，需要配置评论系统
-	guestbook: true,
+	guestbook: false,
 
 	// ── 我的 (My) ──────────────────────────────────
 
 	// 动态页面开关
-	dynamic: true,
+	dynamic: false,
 	// 项目展示页开关
 	projects: true,
 	// 相册页面开关
-	gallery: true,
+	gallery: false,
 	// 书签导航页面开关
-	booknav: true,
+	booknav: false,
 	// 哔哩哔哩追番页面开关
 	bilibili: false,
 	// 番组计划页面开关
@@ -48,11 +48,11 @@ export const siteConfig: SiteConfig = {
 	subtitle: "Demo site",
 
 	// 站点 URL
-	site_url: "https://firefly.cuteleaf.cn",
+	site_url: "https://chkacjo.github.io/Jack-s-Portfolio-/",
 
 	// 站点描述
 	description:
-		"Firefly 是一款基于 Astro 框架和 Fuwari 模板开发的清新美观且现代化个人博客主题模板，专为技术爱好者和内容创作者设计。该主题融合了现代 Web 技术栈，提供了丰富的功能模块和高度可定制的界面，让您能够轻松打造出专业且美观的个人博客网站。",
+		"Firefly 是一款基於 Astro 框架和 Fuwari 模板開發的清新美觀且現代化個人博客主題模板，專為技術愛好者和內容創作者設計。該主題融合了現代 Web 技術棧，提供了豐富的功能模塊和高度可定製的界面，讓您能夠輕鬆打造出專業且美觀的個人博客網站。",
 
 	// 站点关键词
 	keywords: [
@@ -61,8 +61,8 @@ export const siteConfig: SiteConfig = {
 		"Astro",
 		"ACGN",
 		"博客",
-		"技术博客",
-		"静态博客",
+		"技術博客",
+		"靜態博客",
 	],
 
 	// 主题色

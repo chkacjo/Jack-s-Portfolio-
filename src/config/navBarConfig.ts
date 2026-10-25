@@ -36,55 +36,17 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		],
 	});
 
-	//社交及其子菜单
-	links.push({
-		name: "社交",
-		url: "#",
-		icon: "material-symbols:group",
-		children: [
-			// 友链
-			LinkPresets.Friends,
-
-			// 留言
-			LinkPresets.Guestbook,
-		],
-	});
-
 	// 我的及其子菜单
 	links.push({
 		name: "我的",
 		url: "#",
 		icon: "material-symbols:person",
-		children: [
-			// 动态
-			LinkPresets.Dynamic,
-
-			// 项目
-			LinkPresets.Projects,
-
-			// 相册
-			LinkPresets.Gallery,
-
-			// 书签导航
-			LinkPresets.Booknav,
-
-			// 哔哩哔哩追番
-			LinkPresets.Bilibili,
-
-			// 番组计划
-			LinkPresets.Bangumi,
-
-			// VNDB
-			LinkPresets.VNDB,
-
-			// MyAnimeList
-			LinkPresets.MAL,
-		],
+		children: [LinkPresets.Projects],
 	});
 
 	// 关于及其子菜单
 	links.push({
-		name: "关于",
+		name: "關於",
 		url: "#",
 		icon: "material-symbols:info",
 		children: [
@@ -98,7 +60,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 	// 自定义导航栏链接
 	links.push({
-		name: "链接",
+		name: "連結",
 		url: "#",
 		icon: "material-symbols:link",
 		// 子菜单
@@ -116,7 +78,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				icon: "fa7-brands:gitee",
 			},
 			{
-				name: "Firefly文档",
+				name: "Firefly文件",
 				url: "https://docs-firefly.cuteleaf.cn",
 				external: true,
 				icon: "material-symbols:docs",
@@ -146,22 +108,22 @@ export const navBarSearchConfig: NavBarSearchConfig = {
 // ============================================================================
 export const LinkPresets: Record<string, NavBarLink> = {
 	Home: {
-		name: "主页",
+		name: "首頁",
 		url: "/",
 		icon: "material-symbols:home",
 	},
 	Archive: {
-		name: "归档",
+		name: "歸檔",
 		url: "/archive/",
 		icon: "material-symbols:archive",
 	},
 	Categories: {
-		name: "分类",
+		name: "分類",
 		url: "/categories/",
 		icon: "material-symbols:folder-open-rounded",
 	},
 	Tags: {
-		name: "标签",
+		name: "標籤",
 		url: "/tags/",
 		icon: "material-symbols:tag-rounded",
 	},
@@ -171,7 +133,7 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		icon: "material-symbols:layers",
 	},
 	Friends: {
-		name: "友链",
+		name: "友鏈",
 		url: "/friends/",
 		icon: "material-symbols:link-2-rounded",
 		pageKey: "friends",
@@ -183,37 +145,37 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		pageKey: "guestbook",
 	},
 	Dynamic: {
-		name: "动态",
+		name: "動態",
 		url: "/dynamic/",
 		icon: "material-symbols:forum-rounded",
 		pageKey: "dynamic",
 	},
 	Projects: {
-		name: "项目",
+		name: "項目",
 		url: "/projects/",
 		icon: "material-symbols:rocket-launch",
 		pageKey: "projects",
 	},
 	Gallery: {
-		name: "相册",
+		name: "相冊",
 		url: "/gallery/",
 		icon: "material-symbols:photo-library",
 		pageKey: "gallery",
 	},
 	Booknav: {
-		name: "书签导航",
+		name: "書籤導航",
 		url: "/booknav/",
 		icon: "material-symbols:bookmarks",
 		pageKey: "booknav",
 	},
 	Bilibili: {
-		name: "哔哩哔哩",
+		name: "嗶哩嗶哩",
 		url: "/bilibili/",
 		icon: "fa7-brands:bilibili",
 		pageKey: "bilibili",
 	},
 	Bangumi: {
-		name: "番组计划",
+		name: "番組計劃",
 		url: "/bangumi/",
 		icon: "material-symbols:movie",
 		pageKey: "bangumi",
@@ -231,13 +193,13 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		pageKey: "mal",
 	},
 	Sponsor: {
-		name: "打赏",
+		name: "打賞",
 		url: "/sponsor/",
 		icon: "material-symbols:favorite",
 		pageKey: "sponsor",
 	},
 	About: {
-		name: "关于我",
+		name: "關於我",
 		url: "/about/",
 		icon: "material-symbols:person",
 	},

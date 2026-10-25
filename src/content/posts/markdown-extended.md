@@ -1,8 +1,8 @@
 ---
-title: Markdown 扩展功能
+title: Markdown 擴展功能
 published: 1970-01-01
 updated: 1970-01-01
-description: "了解 Firefly 中的 Markdown 功能"
+description: "瞭解 Firefly 中的 Markdown 功能"
 image: ""
 tags: [演示, 示例, Markdown, Firefly]
 category: "文章示例"
@@ -11,13 +11,13 @@ series: "Firefly 功能示例2"
 seriesOrder: 2
 ---
 
-## GitHub 仓库卡片
+## GitHub 倉庫卡片
 
-您可以添加链接到 GitHub 仓库的动态卡片，在页面加载时，仓库信息会从 GitHub API 获取。
+您可以添加鏈接到 GitHub 倉庫的動態卡片，在頁面加載時，倉庫信息會從 GitHub API 獲取。
 
 ::github{repo="CuteLeaf/Firefly"}
 
-使用代码 `::github{repo="CuteLeaf/Firefly"}` 创建 GitHub 仓库卡片。
+使用代碼 `::github{repo="CuteLeaf/Firefly"}` 創建 GitHub 倉庫卡片。
 
 ```markdown
 ::github{repo="CuteLeaf/Firefly"}
@@ -25,7 +25,7 @@ seriesOrder: 2
 
 ## 提醒框(Admonitions)配置
 
-Firefly 采用了 [rehype-callouts](https://github.com/lin-stephanie/rehype-callouts) 插件，支持了四种风格的提醒框主题：`GitHub`、`Obsidian`、`VitePress` 和 `Docusaurus`。您可以在 `src/config/siteConfig.ts` 中进行配置：
+Firefly 採用了 [rehype-callouts](https://github.com/lin-stephanie/rehype-callouts) 插件，支持了四種風格的提醒框主題：`GitHub`、`Obsidian`、`VitePress` 和 `Docusaurus`。您可以在 `src/config/siteConfig.ts` 中進行配置：
 
 ```typescript
 // src/config/siteConfig.ts
@@ -39,17 +39,17 @@ export const siteConfig: SiteConfig = {
 };
 ```
 
-注意：**更改配置后需要重启开发服务器才能生效。**
+注意：**更改配置後需要重啟開發服務器才能生效。**
 
-以下是各个主题支持的类型列表，每个主题风格和语法不同，可根据喜好选择。
+以下是各個主題支持的類型列表，每個主題風格和語法不同，可根據喜好選擇。
 
-### 1. GitHub 主题风格
+### 1. GitHub 主題風格
 
-这是 GitHub 官方支持的 5 种基本类型。
+這是 GitHub 官方支持的 5 種基本類型。
 
 ![GitHub](./images/github.avif)
 
-**基本语法**
+**基本語法**
 
 ```markdown
 > [!NOTE] NOTE
@@ -73,12 +73,12 @@ export const siteConfig: SiteConfig = {
 
 ---
 
-### 2. Obsidian 主题风格
+### 2. Obsidian 主題風格
 
-[Obsidian](https://obsidian.md/) 风格支持非常丰富的类型和别名。
+[Obsidian](https://obsidian.md/) 風格支持非常豐富的類型和別名。
 
 <details>
-<summary>点击展开 Obsidian 语法列表</summary>
+<summary>點擊展開 Obsidian 語法列表</summary>
 
 ```markdown
 
@@ -172,12 +172,12 @@ export const siteConfig: SiteConfig = {
 
 ---
 
-### 3. VitePress 主题风格
+### 3. VitePress 主題風格
 
-[VitePress](https://vitepress.dev/) 风格提供了一套现代化的、扁平的默认样式。目前仅包含与 GitHub 一致的 **5 种** 基础类型。
+[VitePress](https://vitepress.dev/) 風格提供了一套現代化的、扁平的默認樣式。目前僅包含與 GitHub 一致的 **5 種** 基礎類型。
 
 <details>
-<summary>点击展开 VitePress 语法列表</summary>
+<summary>點擊展開 VitePress 語法列表</summary>
 
 ```markdown
 > [!NOTE] NOTE
@@ -204,14 +204,14 @@ export const siteConfig: SiteConfig = {
 
 ---
 
-### 4. Docusaurus 主题风格
+### 4. Docusaurus 主題風格
 
-[Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions) 风格提供了一套现代化的提醒框样式，支持 5 种类型。
+[Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions) 風格提供了一套現代化的提醒框樣式，支持 5 種類型。
 
 <details>
-<summary>点击展开 Docusaurus 语法列表 </summary>
+<summary>點擊展開 Docusaurus 語法列表 </summary>
 
-支持以下类型的提醒框：`note` `tip` `info` `warning` `danger`
+支持以下類型的提醒框：`note` `tip` `info` `warning` `danger`
 
 ```markdown
 :::note
@@ -245,31 +245,31 @@ export const siteConfig: SiteConfig = {
 
 ---
 
-## 剧透
+## 劇透
 
-您可以为文本添加剧透。文本也支持 **Markdown** 语法。
+您可以為文本添加劇透。文本也支持 **Markdown** 語法。
 
-内容 :spoiler[被隐藏了 **哈哈**]！
+內容 :spoiler[被隱藏了 **哈哈**]！
 
 ```markdown
 内容 :spoiler[被隐藏了 **哈哈**]！
 ```
 
-## 图片画廊网格 (Image Grid)
+## 圖片畫廊網格 (Image Grid)
 
-您可以使用 `[grid]` 和 `[/grid]` 标签将多张图片纵向并排展示。这对于展示照片画廊或对比图非常有用。系统会自动根据包裹在其中的图片数量（最多支持并排展示4张）以响应式网格进行布局。
+您可以使用 `[grid]` 和 `[/grid]` 標籤將多張圖片縱向並排展示。這對於展示照片畫廊或對比圖非常有用。系統會自動根據包裹在其中的圖片數量（最多支持並排展示4張）以響應式網格進行佈局。
 
-**自动补齐图片高度：** 同一排中如果有高度、大小或者比例不一的图片，会像「九宫格画廊相册」一样自动撑满。较短或不协调的图片会自动使用 object-cover 进行完美中心裁剪补充视野。图片边框水平彻底对齐无缝隙，但被裁剪后，只有点击图片通过灯箱才能查看完整图片，所以建议尽量避免使用长宽比例不一致的图片在同一排中。
+**自動補齊圖片高度：** 同一排中如果有高度、大小或者比例不一的圖片，會像「九宮格畫廊相冊」一樣自動撐滿。較短或不協調的圖片會自動使用 object-cover 進行完美中心裁剪補充視野。圖片邊框水平徹底對齊無縫隙，但被裁剪後，只有點擊圖片通過燈箱才能查看完整圖片，所以建議儘量避免使用長寬比例不一致的圖片在同一排中。
 
-**图注恒定底端对齐：** 不论上面的图片长宽如何变化，在同一行的所有图像解释文字（图注）都会对标到一条完美的水平基线上了。
+**圖注恆定底端對齊：** 不論上面的圖片長寬如何變化，在同一行的所有圖像解釋文字（圖注）都會對標到一條完美的水平基線上了。
 
 [grid]
-![示例图片一](./images/firefly1.avif)
-![示例图片二](./images/firefly2.avif)
-![示例图片二](./images/firefly3.avif)
+![示例圖片一](./images/firefly1.avif)
+![示例圖片二](./images/firefly2.avif)
+![示例圖片二](./images/firefly3.avif)
 [/grid]
 
-**基本语法**
+**基本語法**
 
 ```markdown
 [grid]
