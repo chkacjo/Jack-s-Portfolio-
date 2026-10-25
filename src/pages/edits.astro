@@ -1,18 +1,12 @@
 ---
 import Markdown from "@/components/common/Markdown.astro";
 import ShortsVideo from "@/components/features/ShortsVideo.astro";
-import Footer from "@/components/layout/Footer.astro";
-import HeaderTopRow from "@/components/layout/HeaderTopRow.astro";
-import NavMenuPanel from "@/components/layout/NavMenuPanel.astro";
-import { navbarMode, siteConfig } from "@/config";
 import { editingWorks } from "@/data/edits";
-import Layout from "@/layouts/Layout.astro";
-import { resolveNavMenuLinks } from "@/utils/nav-menu-utils";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
 ---
 
-<Layout title="剪輯" description="短影音展示測試頁。所列影片僅供版面與播放測試，並非 Jack 的剪輯成果。">
-	<HeaderTopRow navbarMode={navbarMode} navbarWidthFull={siteConfig.navbar.widthFull ?? false} />
-	<main id="swup-container" class="edits-page">
+<MainGridLayout title="剪輯" description="短影音展示測試頁。所列影片僅供版面與播放測試，並非 Jack 的剪輯成果。">
+	<div class="edits-page">
 		<Markdown class="edits-typography">
 			<header class="page-intro">
 				<h1>剪輯</h1>
@@ -34,13 +28,11 @@ import { resolveNavMenuLinks } from "@/utils/nav-menu-utils";
 				))}
 			</section>
 		</Markdown>
-	</main>
-	<Footer />
-	<NavMenuPanel links={resolveNavMenuLinks()} />
-</Layout>
+	</div>
+</MainGridLayout>
 
 <style>
-	.edits-page { position: relative; z-index: 30; --shorts-width: max(200px, min(380px, calc(76svh * 9 / 16))); max-width: calc(var(--shorts-width) + 7rem); margin: 0 auto; padding: 7rem 1.5rem 2rem; }
+	.edits-page { position: relative; z-index: 30; --shorts-width: max(200px, min(380px, calc(76svh * 9 / 16))); max-width: calc(var(--shorts-width) + 7rem); margin: 0 auto; padding: 0 1.5rem 2rem; }
 	.page-intro { margin-bottom: 2rem; }
 	.works { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 	.work { overflow: hidden; border-radius: var(--radius-large); }
@@ -49,7 +41,7 @@ import { resolveNavMenuLinks } from "@/utils/nav-menu-utils";
 	.clip-caption { margin: 0; font-size: .875rem; line-height: 1.8; }
 	.video-stage { display: flex; justify-content: center; padding: 0 2rem 1.25rem; }
 	@media (max-width: 640px) {
-		.edits-page { max-width: calc(var(--shorts-width) + 5rem); padding: 6rem 1rem 1rem; }
+		.edits-page { max-width: calc(var(--shorts-width) + 5rem); padding: 0 1rem 1rem; }
 		.video-stage { padding: 0 1.5rem 1rem; }
 	}
 </style>

@@ -572,15 +572,3 @@ const ogImageAlt = propsOgImageAlt ?? pageTitle;
   import { initLayout } from "@/utils/layout-init";
   initLayout();
 </script>
-
-<script>
-  // Portfolio and blog have separate layouts; cross that boundary with a full navigation.
-  document.addEventListener("click", (event) => {
-    if (!(event.target instanceof Element)) return;
-    const link = event.target.closest<HTMLAnchorElement>("a[href]");
-    if (!link || link.origin !== window.location.origin) return;
-    const fromPortfolio = /\/edits\/?$/.test(window.location.pathname);
-    const toPortfolio = /\/edits\/?$/.test(link.pathname);
-    if (fromPortfolio !== toPortfolio) link.setAttribute("data-no-swup", "");
-  }, true);
-</script>
