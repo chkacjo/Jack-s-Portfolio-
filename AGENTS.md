@@ -21,6 +21,10 @@ Use `pnpm`; the `preinstall` script enforces it.
 
 Biome is the formatter and linter. It uses tabs for indentation and double quotes for JavaScript/TypeScript strings. Keep Astro and Svelte components in `PascalCase` (`PostCard.astro`, `Search.svelte`), config modules in `camelCase` ending with `Config.ts`, and utilities in descriptive kebab case such as `date-utils.ts`. Keep `src/types` aligned with `src/config`. Avoid unrelated formatting churn.
 
+## Design Consistency
+
+For all future UI additions and changes, prioritize consistency with the existing website. Reuse established components, theme color tokens, font families, font weights, spacing, corner radii, and interaction patterns before introducing new styles. Match comparable existing sections rather than creating an unrelated visual style. Verify both light and dark modes and desktop/mobile layouts. Explicit user requests for a different design take precedence over this default.
+
 ## Testing Guidelines
 
 There is no dedicated unit-test framework configured. Before submitting changes, run `pnpm check`, `pnpm type-check`, and `pnpm build` for rendering, content, or generated asset work. For visual or interactive changes, verify with `pnpm dev` or `pnpm preview` and include screenshots in the PR. Name future tests near the feature they cover, using the local file name as the stem.

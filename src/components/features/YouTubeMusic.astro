@@ -129,7 +129,8 @@ if (origin) embedUrl.searchParams.set("origin", origin);
 	.music-summary { display: flex; align-items: center; gap: .75rem; padding: .5rem; }
 	.song-icon { display: grid; place-items: center; flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--btn-regular-bg); color: var(--primary); font-size: 1.5rem; }
 	.song-info { min-width: 0; flex: 1; }
-	.song-title { font-weight: 700; font-size: .85rem; overflow-wrap: anywhere; }
+	.song-title { font: inherit; font-weight: 700; color: #000; overflow-wrap: anywhere; }
+	:global(.dark) .song-title { color: #fff; }
 	.song-status { font-size: .7rem; opacity: .6; margin: .2rem 0; }
 	a { font-size: .65rem; color: var(--primary); }
 	button { flex-shrink: 0; padding: .6rem .75rem; border-radius: 1rem; background: var(--btn-regular-bg); color: var(--primary); font-weight: 700; font-size: .75rem; cursor: pointer; }
