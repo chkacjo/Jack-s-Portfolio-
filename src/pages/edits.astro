@@ -5,20 +5,19 @@ import { editingWorks } from "@/data/edits";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
 ---
 
-<MainGridLayout title="剪輯" description="短影音展示測試頁。所列影片僅供版面與播放測試，並非 Jack 的剪輯成果。">
+<MainGridLayout title="剪輯" description="Jack 的短影音剪輯作品。">
 	<div class="edits-page">
 		<Markdown class="edits-typography">
 			<header class="page-intro">
 				<div class="intro-heading"><h1>剪輯</h1><span class="collection-count">{String(editingWorks.length).padStart(2, "0")} 支影片</span></div>
-				<p class="test-notice">以下影片僅供版面與播放測試，並非我的剪輯成果。</p>
 			</header>
-			<section class="works" aria-label="剪輯測試影片">
+			<section class="works" aria-label="剪輯作品">
 				{editingWorks.map((work, index) => (
 					<article class="work card-base" id={work.id}>
 						<header class="work-copy">
 							<div class="work-heading">
 								<span class="work-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-								<h2>{work.title}</h2><span class="test-badge">測試</span>
+								<h2>{work.title}</h2>
 							</div>
 							<div class="work-meta">
 								<a href={`https://www.youtube.com/shorts/${work.videoId}`} target="_blank" rel="noopener noreferrer" aria-label={`${work.title}的原始頻道與觀看數`}>YTR：<span data-channel-for={work.videoId}>{work.channelName ?? "原頻道 ↗"}</span></a>
@@ -42,14 +41,12 @@ import MainGridLayout from "@/layouts/MainGridLayout.astro";
 	.intro-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
 	.intro-heading h1 { margin: 0; }
 	.collection-count { color: var(--content-meta); font-size: .75rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
-	.test-notice { margin: 0; padding-left: .875rem; border-left: 2px solid var(--primary); font-size: .8125rem; line-height: 1.8; }
 	.works { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 	.work { overflow: hidden; border-radius: var(--radius-large); border: 1px solid var(--line-divider); }
 	.work-copy { padding: 1.5rem 2rem 1.125rem; }
 	.work-heading { display: flex; align-items: center; gap: .625rem; }
 	.work-heading h2 { margin: 0; font-size: 1.125rem; line-height: 1.5; }
 	.work-index { font-size: .6875rem; color: var(--primary); font-weight: 700; font-variant-numeric: tabular-nums; }
-	.test-badge { margin-left: auto; padding: .15rem .5rem; border-radius: .5rem; background: var(--btn-regular-bg); color: var(--primary); font-size: .75rem; white-space: nowrap; }
 	.work-meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: .375rem; margin-top: .75rem; font-size: .8125rem; color: var(--content-meta); overflow-wrap: anywhere; }
 	.meta-divider { opacity: .4; }
 	.clip-caption { margin: .5rem 0 0; font-size: .875rem; line-height: 1.8; }
