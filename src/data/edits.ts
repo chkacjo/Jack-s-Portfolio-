@@ -8,7 +8,7 @@ export const editingWorks: {
 }[] = [
 	{
 		id: "shorts-01",
-		videoId: "E0FqvDzIS7U",
+		videoId: "2kpXjtb7UwA",
 		title: "剪輯作品 01",
 		channelName: null,
 		viewCount: null,
